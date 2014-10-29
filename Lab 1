@@ -1,0 +1,113 @@
+
+public class Dice 
+{
+	int number1;
+	int number2;
+	static int num;
+	boolean isEvenNumber;
+	
+	public Dice()
+	{
+		Throw();
+	}
+	
+	public void Throw()
+	{
+		number1 = (int)(Math.random()*6)+1;
+		number2 = (int)(Math.random()*6)+1;
+	}
+	
+	public int value1()
+	{
+		return number1;
+	}
+	
+	public int value2()
+	{
+		return number2;
+	}
+	
+	public int getTotal()
+	{
+		return num = number1 + number2;
+	}
+	
+	public static int OneDice()
+	{
+		return num;
+	}
+	
+	public static boolean isEven()
+	{
+		boolean isEvenNumber = false;
+		
+	
+		if ((num % 2) == 0)
+		{
+			isEvenNumber = true;
+		}
+	
+		
+		return isEvenNumber;
+	}
+	
+	public void Throw(int dices, boolean even)
+	{
+		do 
+		{
+			for(int i = 0; i < dices; i++)
+			{
+				num += dices;
+			}
+			
+			if ((num % 2) == 0)
+			{
+				isEvenNumber = true;
+			}
+			else
+			{
+				isEvenNumber = false;
+			}
+			
+			if ((num % 2) != 0)
+			{
+				isEvenNumber = false;
+			}
+			else
+			{
+				isEvenNumber = true;
+			}
+		}
+		while(dices != num);
+	}
+}
+
+
+
+
+public class mainDice 
+{
+	public static void main(String[] arg, boolean even)
+	{
+		Dice dice;
+		int rollCount;
+		
+		rollCount = 0;
+		dice = new Dice();
+		dice.OneDice();
+		
+		
+		do{
+		dice.Throw();
+		System.out.println("The dice come up " + dice.value1() + " and " + dice.value2());
+		rollCount++;
+		}
+		while (dice.getTotal()%2 == 0);
+		System.out.println("It took " + rollCount + " to roll.");
+		System.out.println("The dice total is " + dice.getTotal());
+		System.out.println("And it is even?" + " " + dice.isEven());
+		
+		System.out.println(dice.Throw(2, even));
+	
+	}
+}
